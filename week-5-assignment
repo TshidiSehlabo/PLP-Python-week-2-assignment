@@ -1,0 +1,63 @@
+Activity 1
+class Smartphone:
+    def __init__(self, brand, model, battery_life):
+        self.brand = brand  # Public attribute
+        self.__model = model  # Private attribute (name mangling)
+        self.__battery_life = battery_life  # Private attribute
+
+    # Getter methods
+    def get_model(self):
+        return self.__model
+
+    def get_battery_life(self):
+        return self.__battery_life
+
+    # Setter methods
+    def set_battery_life(self, battery_life):
+        if battery_life > 0:
+            self.__battery_life = battery_life
+        else:
+            print("Battery life must be positive!")
+
+    # Method to display phone info
+    def phone_info(self):
+        print(f"Brand: {self.brand}")
+        print(f"Model: {self.get_model()}")
+        print(f"Battery Life: {self.get_battery_life()} hours")
+
+    # Method to simulate phone charging
+    def charge(self, hours):
+        print(f"Charging for {hours} hours...")
+        self.__battery_life += hours
+        print(f"Battery life after charging: {self.get_battery_life()} hours")
+
+# Create an instance of Smartphone
+my_phone = Smartphone("Samsung", "Galaxy S21", 10)
+my_phone.phone_info()  # Display initial phone info
+my_phone.charge(5)  # Charge phone for 5 hours
+
+
+
+Activity 2
+class Vehicle:
+    def move(self):
+        print("Moving")
+
+class Car(Vehicle):
+    def move(self):
+        print("Driving 🚗")
+
+class Plane(Vehicle):
+    def move(self):
+        print("Flying ✈️")
+
+class Boat(Vehicle):
+    def move(self):
+        print("Sailing ⛵")
+
+# Create a list of vehicles
+vehicles = [Car(), Plane(), Boat()]
+
+# Demonstrating polymorphism by calling move() on each vehicle
+for vehicle in vehicles:
+    vehicle.move()  # Each class will execute its own version of move()
